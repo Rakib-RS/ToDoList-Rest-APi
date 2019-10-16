@@ -1,6 +1,6 @@
 'use strcit';
 var mongoose = require('mongoose');
-Task = mongoose.model('Task');
+var Task = mongoose.model('Task');
 exports.list_all_tasks = (req,res) => {
     Task.find({},(err,task) => {
         if (err) {

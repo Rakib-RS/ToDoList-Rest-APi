@@ -1,5 +1,14 @@
 var express = require('express');
 var app = express();
-port = process.env.PORT||3300;
+var port = process.env.PORT||3300;
+var mongoose = require('mongoose');
+var Task = require('./api/models/model');
+var bodyParser = require('body-parser');
+mongoose.connect('mongodb://localhost/Tododb',{useFindAndModify:true,useNewUrlParser:true});
+var db =mongoose.connection;
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
+var routes = require('./api/routes/route');
+routes(app);
 app.listen(port);
 console.log("App started from 3300 port "+port);
