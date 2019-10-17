@@ -1,12 +1,13 @@
 'use strcit';
 var mongoose = require('mongoose');
-var Task = mongoose.model('Task');
+//var Task = mongoose.model('Tasks');
+var Task = require('../models/model');
 exports.list_all_tasks = (req,res) => {
     Task.find({},(err,task) => {
         if (err) {
             res.send(err);
         }
-        res.jason(task);
+        res.json(task);
     });
 };
 exports.create_a_task = (req,res) =>{
@@ -15,7 +16,7 @@ exports.create_a_task = (req,res) =>{
         if (err) {
             res.send(err);
         }
-        res.jason(task);
+        res.json(task);
     });
 };
 exports.read_a_task = (req,res) => {
@@ -23,7 +24,7 @@ exports.read_a_task = (req,res) => {
         if (err) {
             res.send(err);
         }
-        res.jason(task);
+        res.json(task);
     });
 };
 exports.update_a_task = (req,res) => {
@@ -31,7 +32,7 @@ exports.update_a_task = (req,res) => {
         if (err) {
             res.send(err);
         }
-        res.jason(task);
+        res.json(task);
     });
 };
 exports.delete_a_task = (req,res) =>{
@@ -39,6 +40,6 @@ exports.delete_a_task = (req,res) =>{
         if (err) {
             res.send(err);
         }
-        res.jason({message:"Task Successfully Deleted"});
+        res.json({message:"Task Successfully Deleted"});
     });
 }
