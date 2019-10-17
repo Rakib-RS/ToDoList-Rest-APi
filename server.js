@@ -12,6 +12,9 @@ mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
+app.use((req,res)=>{
+    res.status(404).send({url: req.originalUrl + "not found"});
+});
 var routes = require('./api/routes/route');
 routes(app);
 app.listen(port);
